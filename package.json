@@ -1,0 +1,26 @@
+{
+  "name": "ferreteria-gedeon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anthony1209M/ferreteria-gedeon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Anthony1209M/ferreteria-gedeon/issues"
+  },
+  "homepage": "https://github.com/Anthony1209M/ferreteria-gedeon#readme",
+  "dependencies": {
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "mssql": "^12.8.1"
+  }
+}
