@@ -20,6 +20,18 @@ app.get('/', (req, res) => {
     res.redirect('/login.html');
 });
 
+function soloLogueados(req, res, next) {
+    if (req.session.usuario) {
+        next();
+    } else {
+        res.redirect('/login.html');
+    }
+}
+
+app.get('/inventario', soloLogueados, (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'inventario.html'));
+});
+
 app.listen(PUERTO, () => {
     console.log('servidor corriendo en http://localhost:' + PUERTO);
 });
