@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería Gedeón - Login</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="fondo-login">
+    <div class="caja-login">
+        <h1>Ferretería Gedeón</h1>
+        <p class="subtitulo">Sistema de inventario</p>
+
+        <form id="formLogin">
+            <label for="usuario">Usuario</label>
+            <input type="text" id="usuario" required>
+
+            <label for="clave">Contraseña</label>
+            <input type="password" id="clave" required>
+
+            <button type="submit">Entrar</button>
+        </form>
+
+        <p id="mensaje" class="mensaje-error"></p>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>

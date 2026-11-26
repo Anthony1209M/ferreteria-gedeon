@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería Gedeón - Inventario</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header style="background:#22C55E; color:white; padding:15px; display:flex; justify-content:space-between; align-items:center;">
+        <h2>Ferretería Gedeón</h2>
+        <button id="btnSalir" style="width:auto; margin:0; padding:8px 16px; background:#16A34A;">Cerrar sesión</button>
+    </header>
+
+    <main style="padding:20px;">
+        <h3>Inventario</h3>
+        <p></p>
+    </main>
+
+    <script>
+        document.getElementById('btnSalir').addEventListener('click', async () => {
+            await fetch('/api/auth/logout', { method: 'POST' });
+            window.location.href = '/login.html';
+        });
+    </script>
+</body>
+</html>
