@@ -42,4 +42,10 @@ document.getElementById('btnSalir').addEventListener('click', async () => {
     window.location.href = '/login.html';
 });
 
+document.getElementById('buscador').addEventListener('input', (e) => {
+    const texto = e.target.value.toLowerCase();
+    const filtrados = listaProductos.filter(p => p.nombre.toLowerCase().includes(texto));
+    mostrarProductos(filtrados);
+});
+
 cargarProductos();
