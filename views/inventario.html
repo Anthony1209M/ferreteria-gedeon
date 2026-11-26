@@ -7,21 +7,31 @@
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    <header style="background:#22C55E; color:white; padding:15px; display:flex; justify-content:space-between; align-items:center;">
+    <header class="barra-superior">
         <h2>Ferretería Gedeón</h2>
-        <button id="btnSalir" style="width:auto; margin:0; padding:8px 16px; background:#16A34A;">Cerrar sesión</button>
+        <button id="btnSalir" class="btn-salir">Cerrar sesión</button>
     </header>
 
-    <main style="padding:20px;">
-        <h3>Inventario</h3>
-        <p></p>
+    <main class="contenido">
+        <h3>Inventario de productos</h3>
+        <input type="text" id="buscador" class="buscador" placeholder="Buscar producto por nombre...">
+
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTabla"></tbody>
+        </table>
+
+        <p id="sinResultados" class="mensaje-vacio"></p>
     </main>
 
-    <script>
-        document.getElementById('btnSalir').addEventListener('click', async () => {
-            await fetch('/api/auth/logout', { method: 'POST' });
-            window.location.href = '/login.html';
-        });
-    </script>
+    <script src="js/inventario.js"></script>
 </body>
 </html>
