@@ -34,11 +34,19 @@ function mostrarProductos(productos) {
         });
 
         const celdaAcciones = document.createElement('td');
+
         const btnEditar = document.createElement('button');
         btnEditar.textContent = 'Editar';
         btnEditar.className = 'btn-editar';
         btnEditar.addEventListener('click', () => editarProducto(p.id));
         celdaAcciones.appendChild(btnEditar);
+
+        const btnEliminar = document.createElement('button');
+        btnEliminar.textContent = 'Eliminar';
+        btnEliminar.className = 'btn-eliminar';
+        btnEliminar.addEventListener('click', () => eliminarProducto(p.id));
+        celdaAcciones.appendChild(btnEliminar);
+
         fila.appendChild(celdaAcciones);
 
         cuerpoTabla.appendChild(fila);
