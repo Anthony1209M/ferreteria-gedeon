@@ -153,4 +153,11 @@ formProducto.addEventListener('submit', async (e) => {
     }
 });
 
+// con la tecla escape tambien se cancela la edicion
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && idEditando !== null) {
+        salirModoEdicion();
+    }
+});
+
 cargarProductos();
