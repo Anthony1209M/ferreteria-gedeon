@@ -14,6 +14,35 @@
 
     <main class="contenido">
         <h3>Inventario de productos</h3>
+        <form id="formProducto" class="form-producto">
+            <h4>Agregar producto</h4>
+
+            <div class="fila-form">
+                <div>
+                    <label for="codigo">Código</label>
+                    <input type="text" id="codigo" maxlength="20" required>
+                </div>
+                <div>
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" maxlength="100" required>
+                </div>
+                <div>
+                    <label for="categoria">Categoría</label>
+                    <input type="text" id="categoria" maxlength="50">
+                </div>
+                <div>
+                    <label for="precio">Precio</label>
+                    <input type="number" id="precio" min="0" step="0.01" required>
+                </div>
+                <div>
+                    <label for="stock">Stock</label>
+                    <input type="number" id="stock" min="0" step="1" value="0">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-guardar">Guardar producto</button>
+            <p id="mensajeForm" class="mensaje-form"></p>
+        </form>
         <input type="text" id="buscador" class="buscador" placeholder="Buscar producto por nombre...">
 
         <table class="tabla">
