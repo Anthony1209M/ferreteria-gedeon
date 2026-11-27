@@ -116,8 +116,17 @@ formProducto.addEventListener('submit', async (e) => {
         stock: document.getElementById('stock').value
     };
 
-    const respuesta = await fetch('/api/productos', {
-        method: 'POST',
+    // si hay un id guardado es una edicion, si no es un producto nuevo
+    let url = '/api/productos';
+    let metodo = 'POST';
+
+    if (idEditando !== null) {
+        url = '/api/productos/' + idEditando;
+        metodo = 'PUT';
+    }
+
+    const respuesta = await fetch(url, {
+        method: metodo,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(producto)
     });
@@ -130,8 +139,13 @@ formProducto.addEventListener('submit', async (e) => {
     const datos = await respuesta.json();
 
     if (respuesta.ok) {
-        mostrarMensajeForm('Producto guardado', 'ok');
-        formProducto.reset();
+        if (idEditando !== null) {
+            mostrarMensajeForm('Producto actualizado', 'ok');
+            salirModoEdicion();
+        } else {
+            mostrarMensajeForm('Producto guardado', 'ok');
+            formProducto.reset();
+        }
         document.getElementById('codigo').focus();
         cargarProductos();
     } else {
