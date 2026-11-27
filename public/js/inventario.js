@@ -48,4 +48,45 @@ document.getElementById('buscador').addEventListener('input', (e) => {
     mostrarProductos(filtrados);
 });
 
+const formProducto = document.getElementById('formProducto');
+const mensajeForm = document.getElementById('mensajeForm');
+
+function mostrarMensajeForm(texto, tipo) {
+    mensajeForm.textContent = texto;
+    mensajeForm.className = 'mensaje-form ' + tipo;
+}
+
+formProducto.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const producto = {
+        codigo: document.getElementById('codigo').value.trim(),
+        nombre: document.getElementById('nombre').value.trim(),
+        categoria: document.getElementById('categoria').value.trim(),
+        precio: document.getElementById('precio').value,
+        stock: document.getElementById('stock').value
+    };
+
+    const respuesta = await fetch('/api/productos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(producto)
+    });
+
+    if (respuesta.status === 401) {
+        window.location.href = '/login.html';
+        return;
+    }
+
+    const datos = await respuesta.json();
+
+    if (respuesta.ok) {
+        mostrarMensajeForm('Producto guardado', 'ok');
+        formProducto.reset();
+        cargarProductos();
+    } else {
+        mostrarMensajeForm(datos.mensaje, 'error');
+    }
+});
+
 cargarProductos();
