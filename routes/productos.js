@@ -108,5 +108,30 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+// elimina un producto
+router.delete('/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+
+    if (isNaN(id)) {
+        return res.status(400).json({ mensaje: 'Id de producto no válido' });
+    }
+
+    try {
+        const pool = await poolPromise;
+        const resultado = await pool.request()
+            .input('id', sql.Int, id)
+            .query('DELETE FROM Productos WHERE id = @id');
+
+        if (resultado.rowsAffected[0] === 0) {
+            return res.status(404).json({ mensaje: 'No se encontró el producto' });
+        }
+
+        res.json({ mensaje: 'Producto eliminado' });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ mensaje: 'No se pudo eliminar el producto' });
+    }
+});
+
 module.exports = router;
 
