@@ -170,3 +170,27 @@ input:focus {
         grid-template-columns: 1fr;
     }
 }
+
+/* boton de editar en la tabla */
+.btn-editar {
+    width: auto;
+    margin: 0;
+    padding: 5px 12px;
+    font-size: 13px;
+    background-color: #16A34A;
+}
+
+.btn-editar:hover {
+    background-color: #22C55E;
+}
+
+.btn-cancelar {
+    width: auto;
+    padding: 8px 20px;
+    margin-left: 8px;
+    background-color: #6b7280;
+}
+
+.btn-cancelar:hover {
+    background-color: #4b5563;
+}
