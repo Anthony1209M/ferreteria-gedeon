@@ -15,7 +15,7 @@
     <main class="contenido">
         <h3>Inventario de productos</h3>
         <form id="formProducto" class="form-producto">
-            <h4>Agregar producto</h4>
+            <h4 id="tituloForm">Agregar producto</h4>
 
             <div class="fila-form">
                 <div>
@@ -40,7 +40,8 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn-guardar">Guardar producto</button>
+            <button type="submit" class="btn-guardar" id="btnGuardar">Guardar producto</button>
+            <button type="button" class="btn-cancelar" id="btnCancelar" hidden>Cancelar</button>
             <p id="mensajeForm" class="mensaje-form"></p>
         </form>
         <input type="text" id="buscador" class="buscador" placeholder="Buscar producto por nombre...">

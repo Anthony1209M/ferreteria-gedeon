@@ -72,6 +72,39 @@ function mostrarMensajeForm(texto, tipo) {
     }, 4000);
 }
 
+// guarda el id del producto que se esta editando (null = estoy agregando uno nuevo)
+let idEditando = null;
+
+function editarProducto(id) {
+    const p = listaProductos.find(prod => prod.id === id);
+    if (!p) return;
+
+    idEditando = id;
+
+    document.getElementById('codigo').value = p.codigo;
+    document.getElementById('nombre').value = p.nombre;
+    document.getElementById('categoria').value = p.categoria || '';
+    document.getElementById('precio').value = p.precio;
+    document.getElementById('stock').value = p.stock;
+
+    document.getElementById('tituloForm').textContent = 'Editar producto';
+    document.getElementById('btnGuardar').textContent = 'Guardar cambios';
+    document.getElementById('btnCancelar').hidden = false;
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function salirModoEdicion() {
+    idEditando = null;
+    formProducto.reset();
+
+    document.getElementById('tituloForm').textContent = 'Agregar producto';
+    document.getElementById('btnGuardar').textContent = 'Guardar producto';
+    document.getElementById('btnCancelar').hidden = true;
+}
+
+document.getElementById('btnCancelar').addEventListener('click', salirModoEdicion);
+
 formProducto.addEventListener('submit', async (e) => {
     e.preventDefault();
 
