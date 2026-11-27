@@ -183,11 +183,16 @@ async function eliminarProducto(id) {
     }
 
     if (respuesta.ok) {
+       // si estaba editando justo este producto, salgo del modo edicion
+       if (idEditando === id) {
+            salirModoEdicion();
+        }
         cargarProductos();
-    } else {
+        } 
+    else {
         const datos = await respuesta.json();
         alert(datos.mensaje);
-    }
+        }
 }
 
 cargarProductos();
