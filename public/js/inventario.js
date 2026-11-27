@@ -33,6 +33,14 @@ function mostrarProductos(productos) {
             fila.appendChild(celda);
         });
 
+        const celdaAcciones = document.createElement('td');
+        const btnEditar = document.createElement('button');
+        btnEditar.textContent = 'Editar';
+        btnEditar.className = 'btn-editar';
+        btnEditar.addEventListener('click', () => editarProducto(p.id));
+        celdaAcciones.appendChild(btnEditar);
+        fila.appendChild(celdaAcciones);
+
         cuerpoTabla.appendChild(fila);
     });
 }
