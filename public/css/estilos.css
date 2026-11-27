@@ -194,3 +194,16 @@ input:focus {
 .btn-cancelar:hover {
     background-color: #4b5563;
 }
+
+/* boton de eliminar en la tabla */
+.btn-eliminar {
+    width: auto;
+    margin: 0 0 0 6px;
+    padding: 5px 12px;
+    font-size: 13px;
+    background-color: #dc2626;
+}
+
+.btn-eliminar:hover {
+    background-color: #b91c1c;
+}
