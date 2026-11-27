@@ -51,9 +51,17 @@ document.getElementById('buscador').addEventListener('input', (e) => {
 const formProducto = document.getElementById('formProducto');
 const mensajeForm = document.getElementById('mensajeForm');
 
+let temporizador;
+
 function mostrarMensajeForm(texto, tipo) {
     mensajeForm.textContent = texto;
     mensajeForm.className = 'mensaje-form ' + tipo;
+
+    // el mensaje se borra solo a los 4 segundos
+    clearTimeout(temporizador);
+    temporizador = setTimeout(() => {
+        mensajeForm.textContent = '';
+    }, 4000);
 }
 
 formProducto.addEventListener('submit', async (e) => {
@@ -83,6 +91,7 @@ formProducto.addEventListener('submit', async (e) => {
     if (respuesta.ok) {
         mostrarMensajeForm('Producto guardado', 'ok');
         formProducto.reset();
+        document.getElementById('codigo').focus();
         cargarProductos();
     } else {
         mostrarMensajeForm(datos.mensaje, 'error');
