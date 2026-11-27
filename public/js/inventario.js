@@ -168,4 +168,26 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+async function eliminarProducto(id) {
+    const p = listaProductos.find(prod => prod.id === id);
+    if (!p) return;
+
+    const seguro = confirm('¿Seguro que quieres eliminar "' + p.nombre + '"?');
+    if (!seguro) return;
+
+    const respuesta = await fetch('/api/productos/' + id, { method: 'DELETE' });
+
+    if (respuesta.status === 401) {
+        window.location.href = '/login.html';
+        return;
+    }
+
+    if (respuesta.ok) {
+        cargarProductos();
+    } else {
+        const datos = await respuesta.json();
+        alert(datos.mensaje);
+    }
+}
+
 cargarProductos();
